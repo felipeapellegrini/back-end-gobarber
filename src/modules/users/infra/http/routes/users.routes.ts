@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 import uploadConfig from '@config/upload';
+import UsersRepository from '@modules/users/infra/repositories/UsersRepository';
 import CreateUserService from '@modules/users/services/CreateUserService';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import UpdateAvatarService from '@modules/users/services/UpdateUserAvatarService';
@@ -12,7 +13,8 @@ usersRouter.post('/', async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    const createUser = new CreateUserService();
+    const usersRepository = new UsersRepository();
+    const createUser = new CreateUserService(usersRepository);
 
     const user = await createUser.execute({
       name,
@@ -33,7 +35,8 @@ usersRouter.patch(
   ensureAuthenticated,
   upload.single('avatar'),
   async (req, res) => {
-    const updateUserAvatar = new UpdateAvatarService();
+    const usersRepository = new UsersRepository();
+    const updateUserAvatar = new UpdateAvatarService(usersRepository);
 
     const user = await updateUserAvatar.execute({
       user_id: req.user.id,
