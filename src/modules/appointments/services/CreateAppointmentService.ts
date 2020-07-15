@@ -2,15 +2,19 @@ import { startOfHour } from 'date-fns';
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
 import AppError from '@shared/errors/AppError';
 import IAppointmentRepository from '@modules/appointments/repositories/IAppointmentsRepository';
+import { injectable, inject } from 'tsyringe';
 
 interface Request {
   provider_id: string;
   date: Date;
 }
 
+@injectable()
 class CreateAppointmentService {
-  // eslint-disable-next-line prettier/prettier
-  constructor(private appointmentsRepository: IAppointmentRepository) { }
+  constructor(
+    @inject('AppointmentsRepository')
+    private appointmentsRepository: IAppointmentRepository,
+  ) { }// eslint-disable-line prettier/prettier
 
   public async execute({ provider_id, date }: Request): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
