@@ -1,10 +1,10 @@
-import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import authConfig from '@config/auth';
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import User from '@modules/users/infra/typeorm/entities/User';
+import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 
 interface Request {
   email: string;
@@ -21,7 +21,9 @@ export default class AuthenticateUserSevice {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-  ) { } // eslint-disable-line prettier/prettier
+
+    @inject('HashProvider')
+    private hashProvider: IHashProvider,) { } // eslint-disable-line prettier/prettier
 
   public async execute({ email, password }: Request): Promise<Response> {
     const user = await this.usersRepository.findByEmail(email);
@@ -30,7 +32,10 @@ export default class AuthenticateUserSevice {
       throw new AppError('Incorrect user/password', 401);
     }
 
-    const passwordMatched = await compare(password, user.password);
+    const passwordMatched = await this.hashProvider.compareHash(
+      password,
+      user.password,
+    );
 
     if (!passwordMatched) {
       throw new AppError('Incorrect user/password', 401);
