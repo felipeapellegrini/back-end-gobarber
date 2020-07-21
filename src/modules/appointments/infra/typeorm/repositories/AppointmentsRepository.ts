@@ -10,7 +10,7 @@ class AppointmentsRepository implements IAppointmentRepository {
     this.ormRepository = getRepository(Appointment);
   }
 
-  public async findByDate({
+  public async findByDateAndProvider({
     provider_id,
     date,
   }: ICreateAppointmentDTO): Promise<Appointment | undefined> {

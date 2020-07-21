@@ -1,4 +1,3 @@
-// import 'reflect-metadata';
 import { startOfHour } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
@@ -20,7 +19,7 @@ class CreateAppointmentService {
   public async execute({ provider_id, date }: Request): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
-    const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
+    const findAppointmentInSameDate = await this.appointmentsRepository.findByDateAndProvider(
       {
         provider_id,
         date: appointmentDate,
