@@ -71,6 +71,15 @@ describe('UpdateProfile', () => {
     });
 
     expect(updatedUser.password).toBe('aseila');
+    await expect(
+      updateProfile.execute({
+        user_id: 'non-existing-user',
+        name: 'John Doe',
+        email: 'johnbondoe@example.com',
+        old_password: '123123',
+        password: 'aseila',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 
   it('should not be able to update the password without passing the old one', async () => {
