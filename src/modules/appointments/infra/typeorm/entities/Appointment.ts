@@ -15,7 +15,14 @@ class Appointment {
   id: string;
 
   @Column()
-  provider_id: string; // eslint-disable-line camelcase
+  user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'provider_id' })
+  user: User;
+
+  @Column()
+  provider_id: string;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: 'provider_id' })
@@ -25,10 +32,10 @@ class Appointment {
   date: Date;
 
   @CreateDateColumn()
-  created_at: Date; // eslint-disable-line camelcase
+  created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: Date; // eslint-disable-line camelcase
+  updated_at: Date;
 }
 
 export default Appointment;
