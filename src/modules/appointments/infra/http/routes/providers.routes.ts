@@ -9,6 +9,7 @@ const providersRouter = Router();
 const providersController = new ProvidersController();
 const providerMonthAvailabilityController = new ProviderMonthAvailabilityController();
 const providerDayAvailabilityController = new ProviderDayAvailabilityController();
+
 providersRouter.use(ensureAuthenticated);
 
 providersRouter.get('/', providersController.index);

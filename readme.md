@@ -1,53 +1,53 @@
-# Recuperação de senha
+# Recuperação de senha [\]
 
 **RF**
 
-- O usuário deve poder recuperar sua senha informando seu e-mail;
-- O usuário deve receber um e-mail com instruções de recuperação de senha;
-- O usuário deve poder resetar sua senha;
+- O usuário deve poder recuperar sua senha informando seu e-mail; [X]
+- O usuário deve receber um e-mail com instruções de recuperação de senha; [D]
+- O usuário deve poder resetar sua senha; [X]
 
 **RNF**
 
-- Utilizar Ethereal para testar envios em ambiente dev;
-- Utilizar Amazon SES para envios em produção;
-- O envio de e-mails deve acontecer em segundo plano (background job);
+- Utilizar Ethereal para testar envios em ambiente dev; [X]
+- Utilizar Amazon SES para envios em produção; []
+- O envio de e-mails deve acontecer em segundo plano (background job); [X]
 
 **RN**
 
-- O link enviado por email para resetar senha deve expirar em 2h
-- O usuário precisa confirmar a nova senha ao resetá-la;
+- O link enviado por email para resetar senha deve expirar em 2h [X]
+- O usuário precisa confirmar a nova senha ao resetá-la; [X]
 
-# Atualização do perfil
+# Atualização do perfil [\]
 
 **RF**
 
-- O usuário deve poder atualizar seu nome, e-mail e senha;
+- O usuário deve poder atualizar seu nome, e-mail e senha; [X]
 
 **RN**
 
-- O usuário não pode alterar seu e-mail para um e-mail já utilizado;
-- Para atualizar sua senha o usuário deve informar a senha antiga;
-- O usuário precisa confirmar sua senha para atualizá-la;
+- O usuário não pode alterar seu e-mail para um e-mail já utilizado; [X]
+- Para atualizar sua senha o usuário deve informar a senha antiga; [X]
+- O usuário precisa confirmar sua senha para atualizá-la; []
 
-# Painel do prestador
+# Painel do prestador []
 
 **RF**
 
-- O usuário deve poder listar seus agendamentos de um dia específico;
-- O usuário deve receber uma notificação sempre que houver um novo agendamento;
-- O prestador deve poder visualizar as notificações não lidas
+- O usuário deve poder listar seus agendamentos de um dia específico; [X]
+- O usuário deve receber uma notificação sempre que houver um novo agendamento; []
+- O prestador deve poder visualizar as notificações não lidas; []
 
 **RNF**
 
-- Os agendamentos do prestador no dia devem ser armazenados em cache;
-- As notificações do prestador devem ser armazenadas no MongoDB;
-- As notificações do prestador devem ser utilizadas em tempo real utilizando Socket.io;
+- Os agendamentos do prestador no dia devem ser armazenados em cache; []
+- As notificações do prestador devem ser armazenadas no MongoDB; []
+- As notificações do prestador devem ser utilizadas em tempo real utilizando Socket.io; []
 
 **RN**
 
-- A notificação deve ter um status de lida ou não lida para que o prestador possa controlar;
+- A notificação deve ter um status de lida ou não lida para que o prestador possa controlar; []
 
-# Agendamento de serviços
+# Agendamento de serviços [\]
 
 **RF**
 
@@ -58,8 +58,8 @@
 
 **RNF**
 
-- A listagem de prestadores deve ser armazenada em cache;
-- A listagem de serviços de um prestador deve ser armazenada em cache;
+- A listagem de prestadores deve ser armazenada em cache; []
+- A listagem de serviços de um prestador deve ser armazenada em cache; []
 
 **RN**
 
