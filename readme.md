@@ -66,6 +66,6 @@
 - Cada agendamento deve durar 1h exatamente; [X]
 - Os agendamentos devem estar disponíveis entre 8h e 18h; [X]
 - O usuário não pode agendar em um horário já ocupado; [X]
-- O usuário não pode agendar em um horário que já passou; []
+- O usuário não pode agendar em um horário que já passou; [X]
 - O usuário não pode agendar serviços consigo mesmo; [X]
 - O usuário não pode agendar dois serviços ao mesmo tempo; [X]
