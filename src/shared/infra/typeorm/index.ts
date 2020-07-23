@@ -1,6 +1,6 @@
 /**
  * create connection with database
  */
-import { createConnection } from 'typeorm';
+import { createConnections } from 'typeorm';
 
-createConnection();
+createConnections();
