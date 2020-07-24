@@ -28,6 +28,7 @@
   ],
   "rules": {
     "camelcase": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-useless-constructor": "off",
     "prettier/prettier": "error",
     "react/jsx-one-expression-per-line": "off",
