@@ -7,11 +7,11 @@ import EtherealMailProvider from '@shared/container/providers/MailProvider/imple
 import SESMailProvider from '@shared/container/providers/MailProvider/implementation/SESMailProvider';
 
 const providers = {
-  ethereal: EtherealMailProvider,
-  ses: SESMailProvider,
+  ethereal: container.resolve(EtherealMailProvider),
+  ses: container.resolve(SESMailProvider),
 };
 
-container.registerSingleton<IMailProvider>(
+container.registerInstance<IMailProvider>(
   'MailProvider',
   providers[mailConfig.driver],
 );
